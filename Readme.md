@@ -1,0 +1,1 @@
+A basic content managment system to connect with fellow users by creating and reacting on posts. The purpose of this application is to demonstrate the use of Nodejs and ReactJS to create a secure application with both public and private routes.
