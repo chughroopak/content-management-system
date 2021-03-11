@@ -49,8 +49,8 @@ router.post(
 
     const newPost = new Post({
       text: req.body.text,
-      name: req.body.name,
-      avatar: req.body.avatar,
+      name: req.user.name,
+      avatar: req.user.avatar,
       user: req.user.id,
     });
     newPost.save().then((post) => res.json(post));
@@ -148,7 +148,7 @@ router.post(
   "/comment/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { error, isValid } = validatePostInput(req.body);
+    const { errors, isValid } = validatePostInput(req.body);
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -156,8 +156,8 @@ router.post(
       .then((post) => {
         const newComment = {
           text: req.body.text,
-          name: req.body.name,
-          avatar: req.body.avatar,
+          name: req.user.name,
+          avatar: req.user.avatar,
           user: req.user.id,
         };
 
