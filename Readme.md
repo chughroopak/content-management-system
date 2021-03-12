@@ -3,6 +3,8 @@
 **Content Management System** is an application to share posts with your friends, like and comment on your friends posts and interact with them.
 The user is required to do a sign-up/sign-in before they can post or react on any of the posts shared by other users. However, all posts are public and still can be viewed by anyone using the home page of the application.
 On the home page users can go to sign-up or sign-in option to get started with posting content on the website and react on other users' posts.
+
+## Live Version (Heroku)
 To access a live version of the application, please visit [here](https://content-management-39597.herokuapp.com/).
 
 ## Technology Stack
