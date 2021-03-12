@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 const validatePostInput = require("../../validation/post");
+const validateCommentInput = require("../../validation/comment");
 
 //model
 const Post = require("../../models/Post");
@@ -48,6 +49,7 @@ router.post(
     }
 
     const newPost = new Post({
+      title: req.body.title,
       text: req.body.text,
       name: req.user.name,
       avatar: req.user.avatar,
@@ -148,7 +150,7 @@ router.post(
   "/comment/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { errors, isValid } = validatePostInput(req.body);
+    const { errors, isValid } = validateCommentInput(req.body);
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -160,9 +162,8 @@ router.post(
           avatar: req.user.avatar,
           user: req.user.id,
         };
-
         //add to comments array
-        post.comments.unshift(newComment);
+        post.comments.push(newComment);
         post
           .save()
           .then((post) => res.json(post))

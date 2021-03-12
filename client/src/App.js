@@ -38,7 +38,6 @@ function App() {
         <div>
           <NavBar />
           <div className="container">
-            <AuthAlert />
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/" component={Posts}></Route>

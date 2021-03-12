@@ -8,7 +8,7 @@ class AuthAlert extends Component {
     const alert = (
       <div className="alert alert-danger">
         You'll need to log in before you can share or react to any posts. You
-        can still browse and view discussions.
+        can still browse posts and view comments.
       </div>
     );
     const blank = <div></div>;

@@ -7,6 +7,7 @@ import PostItem from "../posts/PostItem";
 import { Link } from "react-router-dom";
 import CommentForm from "./CommentForm";
 import CommentFeed from "./CommentFeed";
+import AuthAlert from "../layout/AuthAlert";
 
 class Post extends Component {
   componentDidMount() {
@@ -34,6 +35,7 @@ class Post extends Component {
     return (
       <div className="post mt-5 mb-5">
         <div className="container">
+          <AuthAlert />
           <div className="row">
             <div className="col-md-12">
               <Link to="/" className="btn btn-light mb-3">
