@@ -14,7 +14,17 @@ The front-end is designed using _ReactJS_ and _Bootstrap_ to provide a clean com
 To setup the application in production environment the user needs to setup the following two environment variables before running the startup command.
 |**Environment Variable**| Value|
 |--|--|
-|**mongoURI**| Mongo DB database URL|
-| **secretOrKey** | This can be any string (e.g., SECRET) |
+|**MONGO_URI**| Mongo DB database URL|
+| **SECRET_OR_KEY** | This can be any string (e.g., SECRET) |
 
 The environment should also have an instance on Node.js installed.
+For development/local environments, the user can set up the aforementioned to variables in the ***keys_dev.js*** file.
+
+## Runtime
+
+Once the setup of application is complete the user can run the following commands in the application root directory to run the application on a local server.
+```
+$ npm install
+$ npm run client-install
+$ npm run dev
+```
