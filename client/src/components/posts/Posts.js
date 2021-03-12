@@ -5,6 +5,7 @@ import PostForm from "./PostForm";
 import { getPosts } from "../../actions/postActions";
 import Spinner from "../common/Spinner";
 import PostFeed from "./PostFeed";
+import AuthAlert from "../layout/AuthAlert";
 
 class Posts extends Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ class Posts extends Component {
     return (
       <div className="feed mt-5 mb-5">
         <div className="container">
+          <AuthAlert />
           <div className="row">
             <div className="col-md-12">
               {isAuthenticated ? <PostForm /> : null}

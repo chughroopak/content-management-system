@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import TextFieldGroup from "../common/TextFieldGroup";
 import { addPost } from "../../actions/postActions";
+import isEmpty from "../../validation/is-empty";
 
 class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      title: "",
       text: "",
-      errors: {}
+      errors: {},
     };
   }
 
@@ -17,45 +20,53 @@ class PostForm extends Component {
     if (props.errors) {
       return {
         ...state,
-        errors: props.errors
+        errors: props.errors,
       };
     }
     return null;
   }
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     const { user } = this.props.auth;
     const newPost = {
+      title: this.state.title,
       text: this.state.text,
       name: user.name,
-      avatar: user.avatar
+      avatar: user.avatar,
     };
 
     this.props.addPost(newPost);
-    this.setState({ text: "" });
+    this.setState({ text: "", title: "" });
   };
 
   render() {
     const { errors } = this.state;
     return (
-      <div className='post-form mb-3'>
-        <div className='card'>
-          <div className='card-header bg-primary text-light'>
-            <h5 className='font-weight-light'>Say Something...</h5>
+      <div className="post-form mb-3">
+        <div className="card">
+          <div className="card-header bg-primary text-light">
+            <h5 className="font-weight-light">Say Something...</h5>
           </div>
-          <div className='card-body'>
+          <div className="card-body">
             <form onSubmit={this.onSubmit}>
+              <TextFieldGroup
+                name="title"
+                placeholder="Title"
+                onChange={this.onChange}
+                error={errors.title}
+                value={this.state.title}
+              />
               <TextAreaFieldGroup
-                name='text'
+                name="text"
                 value={this.state.text}
                 onChange={this.onChange}
-                placeholder='Create a post'
+                placeholder="Create a post"
                 error={errors.text}
               />
-              <input type='submit' className='btn btn-primary' value='Submit' />
+              <input type="submit" className="btn btn-primary" value="Submit" />
             </form>
           </div>
         </div>
@@ -67,12 +78,12 @@ class PostForm extends Component {
 PostForm.propTypes = {
   addPost: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps, { addPost })(PostForm);

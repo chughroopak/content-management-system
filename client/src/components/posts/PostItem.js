@@ -33,17 +33,22 @@ class PostItem extends Component {
     return (
       <div className="card card-body mb-3 post">
         <div className="row">
-          <div className="col-md-2 col-4">
+          <div className="col-md-2 col-4" align="center">
             <img className="rounded-circle" src={post.avatar} alt="" />
             <p className="text-center">{post.name}</p>
           </div>
-          <div className="col-md-10 col-8">
-            <p className="lead">{post.text}</p>
+          <div className="col-md-10 col-8 text-wrap ">
+            <h3 className="lead" style={{ fontSize: "26px" }}>
+              <b>{post.title}</b>
+            </h3>
+            <p className="lead" style={{ fontSize: "18px" }}>
+              {post.text}
+            </p>
             <Link
               to={`/post/${post._id}`}
               className="btn btn-success mr-1 mb-1"
             >
-              Discussion{" "}
+              Comments{" "}
               <span className="comment-count">{post.comments.length}</span>
             </Link>
             {showActions ? (
