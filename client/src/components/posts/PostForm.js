@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import TextFieldGroup from "../common/TextFieldGroup";
 import { addPost } from "../../actions/postActions";
-import isEmpty from "../../validation/is-empty";
 
 class PostForm extends Component {
   constructor(props) {
