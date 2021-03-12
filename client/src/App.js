@@ -11,7 +11,6 @@ import Footer from "./components/layout/Footer";
 import Register from "./components/auth/Register";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
-import AuthAlert from "./components/layout/AuthAlert";
 //check for token
 if (localStorage.getItem("jwtToken")) {
   //set auth token header auth
